@@ -1,0 +1,12 @@
+.signUpLayout {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    height: auto;
+    align-items: normal;
+    padding-top: 64px;
+  }
+}

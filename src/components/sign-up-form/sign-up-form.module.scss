@@ -1,0 +1,81 @@
+.signUpForm {
+  width: 100vw;
+  max-width: 500px;
+  box-shadow: 0px 4px 20px 0px #00000014;
+  border-radius: 16px;
+  padding: 16px;
+  font-family: Roboto;
+  font-weight: 400;
+  color: var(--color-black-light);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &_noEvents{
+    pointer-events: none;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label {
+    line-height: 22px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 15px 8px 15px 16px;
+    border-radius: 8px;
+    background-color: var(--color-gray);
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 16.4px;
+    color: var(--color-gray-light);
+    border: 1px solid transparent;
+
+    &_error {
+      border: 1px solid var(--color-red);
+    }
+  }
+
+  &__passBlock {
+    position: relative;
+  }
+
+  &__btnView {
+    height: 24px;
+    margin: 0 8px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__btn {
+    background-color: var(--color-violet);
+    color: var(--color-white);
+    padding: 13px;
+    border-radius: 8px;
+  }
+
+  &__errorMsg {
+    margin-top: -4px;
+    color: var(--color-red);
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
