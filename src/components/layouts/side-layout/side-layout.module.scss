@@ -1,0 +1,19 @@
+.sideLayout {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  &_start {
+    justify-content: flex-start;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+  }
+
+  &_end {
+    justify-content: flex-end;
+  }
+}

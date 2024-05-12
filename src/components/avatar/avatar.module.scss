@@ -1,0 +1,22 @@
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  overflow: hidden;
+
+  &__small {
+    width: 124px;
+    height: 124px;
+  }
+
+  &__big {
+    width: 187px;
+    height: 187px;
+  }
+
+  &__img {
+    width: auto;
+    height: 100%;
+  }
+}

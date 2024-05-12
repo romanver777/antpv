@@ -1,0 +1,14 @@
+.authTool {
+  position: absolute;
+  top: 32px;
+  right: 0;
+
+  @media (max-width: 1400px) {
+    right: 35px;
+  }
+
+  @media (max-width: 900px) {
+    top: 12px;
+    right: 16px;
+  }
+}
