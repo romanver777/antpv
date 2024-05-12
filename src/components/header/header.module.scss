@@ -1,0 +1,16 @@
+.header {
+  background-color: var(--color-violet);
+  // padding: 0 80px;
+  // display: flex;
+  // align-items: center;
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}

@@ -1,0 +1,12 @@
+.content {
+  max-width: 1280px;
+  margin: 48px auto 69px;
+
+  @media (max-width: 1400px) {
+    padding-inline: 35px;
+  }
+
+  @media (max-width: 768px) {
+    margin-block: 32px;
+  }
+}

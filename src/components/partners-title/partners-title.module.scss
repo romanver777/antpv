@@ -1,0 +1,40 @@
+.partnersTitle {
+  padding: 64px 217px;
+
+  @media (max-width: 1180px) {
+    padding-inline: 140px;
+  }
+
+  @media (max-width: 900px) {
+    padding-inline: 16px;
+  }
+
+  &__title {
+    font-family: Roboto;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 75px;
+    color: var(--color-white);
+    margin-bottom: 16px;
+    text-align: center;
+
+    @media (max-width: 900px) {
+      font-size: 36px;
+      line-height: 42px;
+    }
+  }
+
+  &__desc {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    color: var(--color-gray);
+    text-align: center;
+
+    @media (max-width: 900px) {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+}
