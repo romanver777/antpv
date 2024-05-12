@@ -36,7 +36,7 @@ export const loadPartners = createAsyncThunk(
   async (page: number = 1, thunkApi) => {
     try {
       const resp = await fetch(
-        `https://reqres.in/api/users?page=${page}&delay=3`
+        `https://reqres.in/api/users?page=${page}`
       );
 
       if (!resp.ok) return thunkApi.rejectWithValue("Что-то пошло не так...");
