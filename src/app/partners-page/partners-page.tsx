@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import { useParams, Outlet } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   setPage,
   loadPartners,
   resetPartners,
 } from "../../store/partners/partners";
+import { resetPartner } from "../../store/partner/partner";
 import { signOut } from "../../store/auth/auth";
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 import Header from "../../components/header/header";
@@ -27,11 +29,16 @@ export type TPartner = {
 
 function PartnersPage() {
   const dispatch = useAppDispatch();
+  const { id } = useParams();
 
   const partners = useAppSelector((state) => state.partners.data);
   const page = useAppSelector((state) => state.partners.page);
   const total = useAppSelector((state) => state.partners.total_pages);
   const isLoading = useAppSelector((state) => state.partners.loading);
+
+  useEffect(() => {
+    document.body.style.overflow = id ? "hidden" : "unset";
+  }, [id]);
 
   useEffect(() => {
     dispatch(loadPartners(page));
@@ -42,6 +49,7 @@ function PartnersPage() {
   const onLogOut = () => {
     dispatch(signOut());
     dispatch(resetPartners());
+    dispatch(resetPartner());
   };
 
   const renders = {
@@ -49,22 +57,25 @@ function PartnersPage() {
   };
 
   return (
-    <PageLayout>
-      <Header>
-        <PartnersTitle />
-        <AuthTool onLogOut={onLogOut} />
-      </Header>
-      <Content>
-        <Spinner loading={isLoading}>
-          <List items={partners} renderItem={renders.userCard} />
-        </Spinner>
-        {isLoading ? (
-          <Message text="Загружаем.." />
-        ) : (
-          <LoadMore onLoadItems={onSetPage} isShow={page < total} />
-        )}
-      </Content>
-    </PageLayout>
+    <>
+      <PageLayout>
+        <Header>
+          <PartnersTitle />
+          <AuthTool onLogOut={onLogOut} />
+        </Header>
+        <Content>
+          <Spinner loading={isLoading}>
+            <List items={partners} renderItem={renders.userCard} />
+          </Spinner>
+          {isLoading ? (
+            <Message text="Загружаем.." />
+          ) : (
+            <LoadMore onLoadItems={onSetPage} isShow={page < total} />
+          )}
+        </Content>
+      </PageLayout>
+      <Outlet />
+    </>
   );
 }
 

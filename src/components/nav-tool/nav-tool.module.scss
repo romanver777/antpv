@@ -1,0 +1,14 @@
+.navTool {
+  position: absolute;
+  top: 32px;
+  left: 0;
+
+  @media (max-width: 1400px) {
+    left: 35px;
+  }
+
+  @media (max-width: 900px) {
+    top: 12px;
+    left: 16px;
+  }
+}

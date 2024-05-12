@@ -23,15 +23,16 @@ function App() {
             <PartnersPage />
           </Protected>
         }
-      />
-      <Route
-        path="/user/:id"
-        element={
-          <Protected redirect="/signup">
-            <PartnerPage />
-          </Protected>
-        }
-      />
+      >
+        <Route
+          path="/user/:id"
+          element={
+            <Protected redirect="/signup">
+              <PartnerPage />
+            </Protected>
+          }
+        />
+      </Route>
       <Route path="/signup" element={<SignUpPage />} />
     </Routes>
   );
