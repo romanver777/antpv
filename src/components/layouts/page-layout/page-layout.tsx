@@ -1,11 +1,21 @@
+import cn from "classnames";
 import style from "./page-layout.module.scss";
 
 type TPageLayout = {
+  type?: string;
   children: React.ReactNode;
 };
 
-function PageLayout({ children }: TPageLayout) {
-  return <div className={style.pageLayout}>{children}</div>;
+function PageLayout({ type, children }: TPageLayout) {
+  return (
+    <div
+      className={cn(style.pageLayout, {
+        [style.pageLayout__modal]: type === "modal",
+      })}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default PageLayout;

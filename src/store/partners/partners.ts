@@ -34,10 +34,14 @@ const initialState: IPartnersState = {
 export const loadPartners = createAsyncThunk(
   "load-partners",
   async (page: number = 1, thunkApi) => {
+    const token = localStorage.getItem("token");
+
     try {
-      const resp = await fetch(
-        `https://reqres.in/api/users?page=${page}`
-      );
+      const resp = await fetch(`https://reqres.in/api/users?page=${page}`, {
+        headers: {
+          "X-Auth-Token": token || "",
+        },
+      });
 
       if (!resp.ok) return thunkApi.rejectWithValue("Что-то пошло не так...");
 

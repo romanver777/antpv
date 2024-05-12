@@ -1,0 +1,57 @@
+.partnerTitle {
+  padding: 39px 108px;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  @media (max-width: 1400px) {
+    padding-inline: 143px;
+  }
+
+  @media (max-width: 900px) {
+    padding-inline: 103px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 64px 0;
+    flex-direction: column-reverse;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__text {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      align-items: center;
+    }
+  }
+
+  &__name {
+    font-family: Roboto;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 75px;
+
+    @media (max-width: 1300px) {
+      font-size: 36px;
+      line-height: 42px;
+    }
+  }
+
+  &__role {
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38px;
+
+    @media (max-width: 1300px) {
+      font-size: 20px;
+      line-height: 23px;
+    }
+  }
+}

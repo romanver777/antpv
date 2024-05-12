@@ -1,6 +1,6 @@
 import cn from "classnames";
 import style from "./avatar.module.scss";
-import { TPartner } from "../../store/partners/partners";
+import { TPartner } from "../../store/partner/partner";
 
 type TProps = {
   item: TPartner;
