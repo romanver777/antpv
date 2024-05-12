@@ -23,7 +23,7 @@ export const auth = createAsyncThunk(
     const { email, password } = data;
 
     try {
-      const resp = await fetch("https://reqres.in/api/register/?delay=3", {
+      const resp = await fetch("https://reqres.in/api/register", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -50,7 +50,7 @@ export const init = createAsyncThunk("init", async (_, thunkApi) => {
 
   if (data && token) {
     try {
-      const resp = await fetch("https://reqres.in/api/login/?delay=3", {
+      const resp = await fetch("https://reqres.in/api/login", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -80,6 +80,7 @@ export const authSlice = createSlice({
   reducers: {
     signOut: () => {
       localStorage.removeItem("token");
+      localStorage.removeItem("data");
 
       return { ...initialState, loading: false };
     },
