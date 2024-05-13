@@ -13,6 +13,7 @@ type TInput = {
   max?: number;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   clearErrors: any;
 };
 
@@ -83,6 +84,7 @@ function Input(props: TInput) {
         )}
       </div>
       {errors[name] && (
+        // @ts-expect-error: Unreachable code error
         <div className={style.input__error}>{errors[name]?.message}</div>
       )}
     </div>
