@@ -13,10 +13,11 @@ type TInput = {
   max?: number;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
+  clearErrors: any;
 };
 
 function Input(props: TInput) {
-  const { label, name, type, min, max, register, errors } = props;
+  const { label, name, type, min, max, register, errors, clearErrors } = props;
   const EMAIL_PATTERN =
     /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -41,15 +42,35 @@ function Input(props: TInput) {
           placeholder={type === "password" ? "******" : label}
           {...register(name, {
             required: "Это обязательное поле",
-            minLength: min || 2,
-            maxLength: max || 25,
-            pattern: name === "email" ? EMAIL_PATTERN : undefined,
+            minLength: {
+              value: min === null ? 0 : min || 2,
+              message: `Минимум ${min || 2} символа`,
+            },
+            maxLength: {
+              value: max || 25,
+              message: `Максимум ${max || 25} символов`,
+            },
+            pattern: {
+              value:
+                name === "email"
+                  ? EMAIL_PATTERN
+                  : name === "name"
+                  ? /^[A-Za-z]+$/
+                  : /^[A-Za-z0-9]+$/,
+              message:
+                name === "email"
+                  ? "Неверный формат почты"
+                  : name === "name"
+                  ? "Используйте только буквы"
+                  : "Используйте только буквы и цифры",
+            },
             validate: (value, formValues) => {
               if (name === "passwordConfirm") {
-                return value === formValues.password;
+                return value === formValues.password || "Пароли не совпадают";
               }
             },
           })}
+          onChange={() => clearErrors(name)}
         />
         {type === "password" && (
           <button className={style.input__btn} onClick={onShowPass}>
@@ -61,7 +82,9 @@ function Input(props: TInput) {
           </button>
         )}
       </div>
-      {errors[name] && <div className={style.input__error}>Ошибка</div>}
+      {errors[name] && (
+        <div className={style.input__error}>{errors[name]?.message}</div>
+      )}
     </div>
   );
 }
