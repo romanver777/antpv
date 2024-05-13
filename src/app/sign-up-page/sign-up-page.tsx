@@ -38,7 +38,12 @@ function SignUp() {
       <Spinner loading={loading}>
         <SignUpForm onSignUp={onSendForm} error={error} loading={loading}>
           <Input label="Имя" name="name" type="text" max={15} />
-          <Input label="Электронная почта" name="email" type="text" />
+          <Input
+            label="Электронная почта"
+            name="email"
+            type="text"
+            min={null}
+          />
           <Input
             label="Пароль"
             name="password"
@@ -50,7 +55,7 @@ function SignUp() {
             label="Подтвердите пароль"
             name="passwordConfirm"
             type="password"
-            min={4}
+            min={null}
           />
         </SignUpForm>
       </Spinner>

@@ -26,6 +26,7 @@ function SignUpForm({ error, children, onSignUp, loading }: TSignUpForm) {
     register,
     handleSubmit,
     formState: { errors },
+    clearErrors,
   } = useForm<TFormData>();
 
   const onSubmit: SubmitHandler<TFormData> = (data) => {
@@ -51,6 +52,7 @@ function SignUpForm({ error, children, onSignUp, loading }: TSignUpForm) {
                 errors,
                 confirmPasswordError,
                 key: child.props.name,
+                clearErrors,
               })
             : child;
         })}
